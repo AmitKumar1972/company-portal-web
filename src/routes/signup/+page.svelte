@@ -3,7 +3,7 @@
     import Footer from "../../components/Footer.svelte";
     import Input from "../../components/Input.svelte";
 
-    let name = "";
+    let username = "";
     let password = "";
     let email = "";
     let workspaceName = "";
@@ -22,6 +22,8 @@
         } else {
             nameError = "";
         }
+
+        console.log('aaya yahana')
 
         if (!passwordRegex.test(password)) {
             passwordError =
@@ -84,7 +86,7 @@
             >
                 <div class="text-lg font-medium text-center mb-5">Sign Up</div>
                 <Input
-                    bind:value={name}
+                    bind:value={username}
                     placeholder="Enter Your Name"
                     required = "true"
                 />
