@@ -1,5 +1,4 @@
 <script>
-	import { Card, MenuButton, Dropdown, DropdownItem, Avatar, Button } from 'flowbite-svelte';
 	import SideBar from '../../components/SideBar.svelte';
 </script>
 
@@ -28,35 +27,6 @@
 				<button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"> Logout </button>
 			</div>
 		</div>
-		<!-- <div class="w-full h-full flex flex-col">
-            <div class="w-full h-full flex flex-row">
-                <div class="font-semibold text-4xl ml-5 mt-5">
-                    32 Employee
-                </div>
-                <button>+New Candidate</button>
-            </div>
-            <div>
-              <Card padding='sm'>
-                <div class="flex justify-end">
-                  <MenuButton />
-                  <Dropdown class="w-36">
-                    <DropdownItem>Edit</DropdownItem>
-                    <DropdownItem>Export data</DropdownItem>
-                    <DropdownItem>Delete</DropdownItem>
-                  </Dropdown>
-                </div>
-                <div class="flex flex-col items-center pb-4">
-                  <Avatar size="lg" src="https://media.istockphoto.com/id/1009749608/photo/young-woman-portrait-in-the-city.jpg?s=612x612&w=0&k=20&c=nBmdXrCkI6Zz-J1EkCGQAamaYlZeIOQAtKunC4WMT-U=" />
-                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-                    <div class="flex mt-4 space-x-3 lg:mt-6">
-                      <Button>Add friend</Button>
-                      <Button color="light" class="dark:text-white">Message</Button>
-                    </div>
-                </div>
-              </Card>
-            </div>
-        </div> -->
 		<div class="w-full h-full flex flex-col items-start justify-start">
 			<div class="w-full h-auto flex flex-row items-start mt-7">
 				<div class="font-semibold text-4xl ml-5">32 Employee</div>
