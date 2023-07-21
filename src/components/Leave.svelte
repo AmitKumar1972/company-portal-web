@@ -16,7 +16,7 @@
       onSubmit(formData);
     };
   </script>
-  
+
   <form class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
     <h2 class="text-2xl font-bold mb-4">Apply for Leave</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -62,4 +62,3 @@
       </button>
     </div>
   </form>
-  
