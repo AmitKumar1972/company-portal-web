@@ -1,9 +1,10 @@
 <script>
+
 	// @ts-nocheck
 	import Footer from '../../components/Footer.svelte';
 	import Input from '../../components/Input.svelte';
 	import VerifyOtp from '../../components/VerifyOtp.svelte';
-	import { signup } from '$lib/api.Ts';
+	import { signup } from '$lib/api';
 
 	let username = '';
 	let password = '';

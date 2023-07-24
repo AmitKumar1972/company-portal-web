@@ -3,18 +3,28 @@
 	// @ts-nocheck
 
 	import { verifyOTP } from '$lib/api';
+	import { goto } from '$app/navigation';
 
 	export let isOpen;
 	export let closeModal;
 	export let email;
+	let showToast = false;
 	let otp;
 
 	async function handleVerify() {
 		const verifyOtpResponse = await verifyOTP(email, otp);
 		if (verifyOtpResponse?.verifyOtp) {
 			// OTP verification successful
-			alert('OTP verified successfully!');
 			closeModal();
+
+			showToast = true;
+
+			goto('/dashboard');
+
+			setTimeout(() => {
+                    showToast = false;
+                }, 5000);
+
 		} else {
 			// OTP verification failed
 			alert('Invalid OTP. Please try again.');
@@ -36,3 +46,8 @@
 		<button on:click={closeModal} class="bg-gray-500 text-white px-4 py-2 rounded-md">Close</button>
 	</div>
 </div>
+{#if showToast}
+    <div class="fixed bottom-4 left-4 p-2 bg-gray-800 text-white rounded shadow">
+        OTP verified successfully!
+    </div>
+{/if}
