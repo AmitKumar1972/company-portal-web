@@ -1,4 +1,4 @@
-<div class="w-24 h-screen bg-gray-700 flex flex-col items-center border-r-[1px] border-gray-medium-2 md:[w-30] md:block">
+<div class="w-20 h-screen bg-gray-700 flex flex-col items-center border-r-[1px] border-gray-medium-2 md:[w-30] md:block">
 	<div class="mt-8">
 		<button class="hover:ring-slate-400 ring-2 rounded-full">
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12 text-white p-2 bg-blue-800 rounded-full" viewBox="0 0 24 24">
