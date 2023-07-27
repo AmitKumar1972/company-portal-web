@@ -1,4 +1,3 @@
-<!-- Modal.svelte -->
 <script>
 // @ts-nocheck
 

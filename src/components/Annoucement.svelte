@@ -15,9 +15,9 @@
 		},
 		{
 			title:
-				'Everyone Should Learkcsdkfmladksmclasdmclsdmclasdmvlasdkvmlaksmfalsmn Svelte in the Next 2 Weeks',
+				'Everyone Should Learn Svelte in the Next 2 Weeks',
 			description:
-				'It is the fastest-growing frameworcjcsdcnjksdnvcjksdfnvjkdfkjvndfjkvndfjkvnerjkfniowejfiowedjiowejooooooooooo oooooooooooooooooooooooooooo oooooooooooooooooooooooooooo oooooooooooooooooooooooooooooooooooooook. Everyone should have this in their skills.'
+				'It is the fastest-growing framework. Everyone should have this in their skills.'
 		}
 	];
 
@@ -75,7 +75,6 @@
 	<div class="mb-4" />
 </div>
 
-<!-- Your modal component code goes here -->
 {#if showModal}
 	<!-- Render the modal component and pass the selected announcement and closeModal function to it -->
 	<AnnoucementModal {selectedAnnouncement} {closeModal} />
