@@ -37,10 +37,10 @@
 </script>
 
 <!-- Main code -->
-<div class="bg-white drop-shadow-xl flex flex-col gap-3 max-w-lg rounded-lg cursor-pointer p-5">
-	<div class="font-sans text-xl font-semibold flex items-center">
+<div class="bg-white drop-shadow-xl flex flex-col gap-3 max-w-lg rounded-lg w-full cursor-pointer p-5">
+	<div class="font-sans text-xl font-semibold flex items-center justify-between">
 		Announcements
-		<button class="text-blue-600 font-semibold">View All</button>
+		<button class="text-blue-600 font-semibold text-sm">View All</button>
 	</div>
 	<div class="flex flex-col gap-5">
 		<!-- Iterate over the announcements array to generate the clickable announcement cards -->

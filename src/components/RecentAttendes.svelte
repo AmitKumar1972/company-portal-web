@@ -32,17 +32,17 @@
 	<div class="flex flex-col gap-4">
 		{#each attendees as attendee}
 			<div
-				class="w-full bg-slate-100 border border-gray px-2 py-3 shadow-md rounded-lg flex gap-3 justify-around"
+				class="w-full bg-slate-100 border border-gray px-2 py-3 shadow-md rounded-lg flex gap-3"
 			>
-				<div>
-					<img src={attendee.image} alt="profile" class="rounded-full h-10 w-10 object-cover" />
+				<div class="w-10 h-10">
+					<img src={attendee.image} alt="profile" class="rounded-full h-full w-full object-cover" />
 				</div>
 				<div>
 					<p class="text-bold">{attendee.name}</p>
-					<p class=" text-gray-600 text-sm">
+					<p class=" text-gray-600 text-sm whitespace-nowrap">
 						Time checked in: <span class="font-semibold">{attendee.checkInTime}</span>
 					</p>
-					<p class=" text-gray-600 text-sm">
+					<p class=" text-gray-600 text-sm whitespace-nowrap">
 						Time checked out: <span class="font-semibold">{attendee.checkOutTime}</span>
 					</p>
 				</div>

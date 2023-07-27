@@ -39,7 +39,7 @@
 	];
 </script>
 
-<div class="w-full bg-white drop-shadow-xl rounded-lg">
+<div class="w-full bg-white drop-shadow-xl rounded-lg mt-7">
 	<div class="w-auto flex items-center border-b-2 p-4 justify-center">
 		<div class="w-full overflow-hidden font-sans text-black font-semibold">
 			Employee

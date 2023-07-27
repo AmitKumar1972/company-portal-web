@@ -60,20 +60,22 @@
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
 	<div class="w-72 bg-slate-500 hidden sm:block" />
-	<div class="w-full flex flex-col gap-7">
+	<div class="w-full flex flex-col">
 		<Header />
-		<div class="flex flex-col pl-5 mx-auto pr-5 pb-5">
-			<div class="text-2xl font-semibold">Welcome Admin</div>
-			<div class="flex justify-between">
-				<div class="flex flex-col gap-5">
-					<DailyEmployeeStats />
-					<div class="flex gap-4 flex-col sm:flex-row">
-						<div><RecentAttendes /></div>
-						<div><Annoucement /></div>
-						<div class="pr-7 pl-5 hidden lg:block"><EmployeeTable /></div>
+		<div class="flex pl-5 mx-auto justify-around w-full pb-5">
+			<div class="flex flex-col gap-5 mt-7 mx-auto pr-5">
+				<div class="text-2xl font-semibold">Welcome Admin</div>
+				<div class="flex justify-between">
+					<div class="flex flex-col gap-5">
+						<DailyEmployeeStats />
+						<div class="flex gap-4 flex-col sm:flex-row">
+							<div><RecentAttendes /></div>
+							<div><Annoucement /></div>
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="hidden lg:block border-l pl-8"><EmployeeTable /></div>
 		</div>
 	</div>
 </div>
