@@ -37,8 +37,8 @@
 </script>
 
 <!-- Main code -->
-<div class="bg-white drop-shadow-xl flex flex-col gap-3 rounded-lg cursor-pointer max-w-lg p-5">
-	<div class="font-sans text-xl font-semibold flex justify-between items-center">
+<div class="bg-white drop-shadow-xl flex flex-col gap-3 max-w-lg rounded-lg cursor-pointer p-5">
+	<div class="font-sans text-xl font-semibold flex items-center">
 		Announcements
 		<button class="text-blue-600 font-semibold">View All</button>
 	</div>
@@ -62,12 +62,12 @@
 				tabindex="0"
 				role="button"
 			>
-				<h5 class=" font-bold tracking-tight text-gray-900 leading-tight line-clamp-2">
+				<div class="font-bold text-gray-900 break-all">
 					{announcement.title}
-				</h5>
-				<p class="font-normal text-gray-700 text-sm leading-tight line-clamp-2">
+				</div>
+				<div class="text-gray-700 text-sm break-all">
 					{announcement.description}
-				</p>
+				</div>
 			</div>
 		{/each}
 	</div>

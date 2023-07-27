@@ -31,7 +31,9 @@
 	<!-- Iterate over the attendees array to generate the attendee cards -->
 	<div class="flex flex-col gap-4">
 		{#each attendees as attendee}
-			<div class="w-full bg-slate-100 border border-gray px-2 py-3 shadow-md rounded-lg flex gap-3 justify-around">
+			<div
+				class="w-full bg-slate-100 border border-gray px-2 py-3 shadow-md rounded-lg flex gap-3 justify-around"
+			>
 				<div>
 					<img src={attendee.image} alt="profile" class="rounded-full h-10 w-10 object-cover" />
 				</div>
@@ -48,7 +50,3 @@
 		{/each}
 	</div>
 </div>
-<!-- <div class="bg-white px-4">
-	<div></div>
-
-</div> -->
