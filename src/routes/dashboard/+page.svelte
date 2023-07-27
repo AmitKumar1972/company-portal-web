@@ -59,7 +59,9 @@
 </script>
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
-	<div class="w-72 bg-slate-500 hidden sm:block" />
+	<div class="w-72 bg-slate-700 hidden sm:block">
+		<SideBar />
+	</div>
 	<div class="w-full flex flex-col">
 		<Header />
 		<div class="flex pl-5 mx-auto justify-around w-full pb-5">
