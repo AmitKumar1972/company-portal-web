@@ -37,16 +37,16 @@
 </script>
 
 <!-- Main code -->
-<div class="container mx-9 bg-white drop-shadow-xl max-w-xl cursor-pointer h-fit">
-	<div class="text-2xl mb-4 font-sans font-semibold px-5 mt-3 flex justify-between items-center">
+<div class="bg-white drop-shadow-xl flex flex-col gap-3 rounded-lg cursor-pointer max-w-lg p-5">
+	<div class="font-sans text-xl font-semibold flex justify-between items-center">
 		Announcements
-		<button class="text-blue-600 font-semibold px-3">View All</button>
+		<button class="text-blue-600 font-semibold">View All</button>
 	</div>
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col gap-5">
 		<!-- Iterate over the announcements array to generate the clickable announcement cards -->
 		{#each announcements as announcement}
 			<div
-				class="bg-slate-300 shadow-md rounded-md p-4 mx-5 cursor-pointer"
+				class="bg-slate-100 border border-gray px-2 py-3 flex flex-col gap-1 shadow-md rounded-md cursor-pointer"
 				on:click={() => {
 					selectedAnnouncement = announcement;
 					showModal = true;
@@ -62,10 +62,10 @@
 				tabindex="0"
 				role="button"
 			>
-				<h5 class="text-2xl font-bold tracking-tight text-gray-900 leading-tight line-clamp-2">
+				<h5 class=" font-bold tracking-tight text-gray-900 leading-tight line-clamp-2">
 					{announcement.title}
 				</h5>
-				<p class="mt-4 font-normal text-gray-700 leading-tight line-clamp-2">
+				<p class="font-normal text-gray-700 text-sm leading-tight line-clamp-2">
 					{announcement.description}
 				</p>
 			</div>

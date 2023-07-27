@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 	import EmployeeTable from '../../components/EmployeeTable.svelte';
 	import SideBar from '../../components/SideBar.svelte';
 	import RecentAttendes from '../../components/RecentAttendes.svelte';
@@ -45,6 +45,35 @@
 				</div>
 			</div>
 				<EmployeeTable />
+		</div>
+	</div>
+</div> -->
+
+<script>
+	import EmployeeTable from '../../components/EmployeeTable.svelte';
+	import SideBar from '../../components/SideBar.svelte';
+	import RecentAttendes from '../../components/RecentAttendes.svelte';
+	import Annoucement from '../../components/Annoucement.svelte';
+	import Header from '../../components/Header.svelte';
+	import DailyEmployeeStats from '../../components/DailyEmployeeStats.svelte';
+</script>
+
+<div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
+	<div class="w-72 bg-slate-500" />
+	<div class="w-full flex flex-col gap-7">
+		<Header />
+		<div class="flex flex-col pl-5">
+			<div class="text-2xl font-semibold">Welcome Admin</div>
+			<div class="flex justify-between">
+				<div class="flex flex-col gap-5">
+					<DailyEmployeeStats />
+					<div class="flex gap-4">
+						<div><RecentAttendes /></div>
+						<div><Annoucement /></div>
+						<div class="pr-7 pl-5 hidden lg:block"><EmployeeTable /></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
