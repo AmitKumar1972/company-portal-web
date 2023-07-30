@@ -66,6 +66,9 @@
 		</button>
 	</div>
 </div> -->
+<script>
+	import {goto} from '$app/navigation';
+</script>
 <div class="flex h-full">
 	<div class="flex-1 flex flex-col items-center border-r border-white pt-5 px-0.5">
 		<button class="hover:ring-slate-400 rounded-full">
@@ -99,7 +102,9 @@
 			</svg>
 		</div>
 		<div class="flex flex-col gap-4 px-2">
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/dashboard')}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -116,7 +121,9 @@
 				</svg>
 				<span class="text-white text-lg">Dashboard</span>
 			</div>
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/attendance')}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -133,7 +140,9 @@
 				</svg>
 				<span class="text-white text-lg">Attendance</span>
 			</div>
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/leave')}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -150,7 +159,9 @@
 				</svg>
 				<span class="text-white text-lg">Leave</span>
 			</div>
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/employee')}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
