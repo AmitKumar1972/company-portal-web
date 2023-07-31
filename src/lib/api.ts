@@ -53,11 +53,12 @@ export async function getAllWorkSpaces() {
         const token = Cookies.get('portal-token');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
 
+
         const data = await graphQLClient.request(GET_ALL_WORKSPACES_QUERY);
         return data;
 
     } catch (error) {
-        throw new Error('Error signing in. Please try again later.');
+        throw new Error('Error getting all workspaces in. Please try again later.');
     }
 }
 

@@ -36,8 +36,7 @@ query GetAllWorkSpaces {
     getAllWorkspaces {
         total
         workspace{
-        workspaceName
-            logo
+            workspaceName
         }
     }
 }

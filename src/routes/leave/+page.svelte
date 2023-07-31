@@ -5,11 +5,12 @@
 	import LeaveDetailsTable from '../../components/LeaveDetailsTable.svelte';
 	import ManageTimeHeader from '../../components/ManageTimeHeader.svelte';
 	import SideBar from '../../components/SideBar.svelte';
+	export let data;
 </script>
 
 <div class="flex flex-col md:flex-row w-screen h-screen">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar />
+		<SideBar getAllWorkSpacesResponse={data.getAllWorkspaces}/>
 	</div>
 	<div class="w-full h-full flex flex-col bg-neutral-100">
 		<ManageTimeHeader />

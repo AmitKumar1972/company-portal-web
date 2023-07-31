@@ -70,24 +70,8 @@
 // @ts-nocheck
 
 	import { goto } from '$app/navigation';
-	import { getAllWorkSpaces } from '$lib/api';
-	import { onMount } from 'svelte';
 	import SidebarWorkspaceList from './SidebarWorkspaceList.svelte';
-	let getAllWorkSpacesResponse;
-
-	// Function to make the GraphQL API request
-	async function getWorkspaces() {
-		try {
-			getAllWorkSpacesResponse = await getAllWorkSpaces();
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		}
-	}
-
-	// Call the API function when the component mounts
-	onMount(() => {
-		getWorkspaces();
-	});
+	export let getAllWorkSpacesResponse;
 </script>
 
 <div class="flex h-full">

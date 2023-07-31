@@ -50,17 +50,21 @@
 </div> -->
 
 <script>
+// @ts-nocheck
+
 	import EmployeeTable from '../../components/EmployeeTable.svelte';
 	import SideBar from '../../components/SideBar.svelte';
 	import RecentAttendes from '../../components/RecentAttendes.svelte';
 	import Annoucement from '../../components/Annoucement.svelte';
 	import Header from '../../components/Header.svelte';
 	import DailyEmployeeStats from '../../components/DailyEmployeeStats.svelte';
+
+	export let data;
 </script>
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
 	<div class="bg-slate-700 hidden sm:block">
-		<SideBar />
+		<SideBar getAllWorkSpacesResponse={data.getAllWorkspaces}/>
 	</div>
 	<div class="w-full flex flex-col">
 		<Header />

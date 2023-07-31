@@ -6,16 +6,12 @@
     import Footer from '../../components/Footer.svelte';
     import Input from '../../components/Input.svelte';
     import { goto } from '$app/navigation';
+	import Cookies from 'js-cookie';
   
     let password = '';
     let email = '';
     let apiError = '';
-  
-    function setCookie(name, value, days) {
-      const expires = new Date();
-      expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
-    }
+
   
     async function validateForm(event) {
       event.preventDefault(); // prevent default form submission behavior
@@ -26,11 +22,7 @@
         if (signinResponse?.signin) {
           // Set the token and expiration time in cookies
           const token = signinResponse.signin.token;
-          const expiresIn = signinResponse.signin.expiresIn; // Expiration time in seconds
-  
-          // Convert expiresIn to days and set it in cookies
-          const expirationDays = expiresIn / (60 * 60 * 24); // Convert seconds to days
-          setCookie('portal-token', token, expirationDays);
+          Cookies.set('portal-token', token);
   
           // Redirect to /dashboard after setting the token
           goto('/dashboard');

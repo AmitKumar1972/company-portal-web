@@ -1,11 +1,14 @@
 <script>
+	// @ts-nocheck
+
 	import Header from '../../components/Header.svelte';
-import SideBar from '../../components/SideBar.svelte';
+	import SideBar from '../../components/SideBar.svelte';
+	export let data;
 </script>
 
 <div class="flex flex-row w-screen h-screen">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar />
+		<SideBar getAllWorkSpacesResponse={data.getAllWorkspaces} />
 	</div>
 	<div class="w-full h-full flex flex-col bg-neutral-100">
 		<div class="w-full h-full flex flex-col items-start justify-start">
@@ -17,9 +20,7 @@ import SideBar from '../../components/SideBar.svelte';
 				>
 			</div>
 			<div class="ml-5 mt-10">
-				<div
-					class="flex flex-col items-center justify-center bg-white rounded-xl drop-shadow-xl"
-				>
+				<div class="flex flex-col items-center justify-center bg-white rounded-xl drop-shadow-xl">
 					<img
 						src="https://media.istockphoto.com/id/1009749608/photo/young-woman-portrait-in-the-city.jpg?s=612x612&w=0&k=20&c=nBmdXrCkI6Zz-J1EkCGQAamaYlZeIOQAtKunC4WMT-U="
 						alt="Imag"
