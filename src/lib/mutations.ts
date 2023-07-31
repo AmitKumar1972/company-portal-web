@@ -6,6 +6,21 @@ mutation Signup($name: String!, $email: String!, $password: String!, $workspaceN
 }
 `;
 
+export const SIGNIN_MUTATION = `
+mutation Signin($email: String!, $password: String!) {
+    signin(email: $email, password: $password) {
+        success
+        token
+        expiresIn
+        user {
+            id
+            name
+            email
+        }
+    }
+}
+`;
+
 export const VERIFY_OTP_MUTATION = `
         mutation VerifyOtp($email: String!, $otp: Int!) {
             verifyOtp(email: $email, otp: $otp) {
@@ -14,4 +29,26 @@ export const VERIFY_OTP_MUTATION = `
                 isEmailVerified
             }
         }
+`;
+
+export const GET_ALL_WORKSPACES_QUERY = `
+query GetAllWorkSpaces {
+    getAllWorkspaces {
+        total
+        workspace{
+        workspaceName
+            logo
+        }
+    }
+}
+`;
+
+export const CREATE_WORKSPACE_MUTATION = `
+mutation CreateWorkspaceMutation($workspaceName: String!, $uniqueName: String!) {
+    createWorkspace (workspaceName: $workspaceName, uniqueName: $uniqueName) {
+        id
+        workspaceName
+        uniqueName
+    }
+}
 `;

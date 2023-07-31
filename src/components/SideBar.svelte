@@ -67,27 +67,32 @@
 	</div>
 </div> -->
 <script>
-	import {goto} from '$app/navigation';
+// @ts-nocheck
+
+	import { goto } from '$app/navigation';
+	import { getAllWorkSpaces } from '$lib/api';
+	import { onMount } from 'svelte';
+	import SidebarWorkspaceList from './SidebarWorkspaceList.svelte';
+	let getAllWorkSpacesResponse;
+
+	// Function to make the GraphQL API request
+	async function getWorkspaces() {
+		try {
+			getAllWorkSpacesResponse = await getAllWorkSpaces();
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	// Call the API function when the component mounts
+	onMount(() => {
+		getWorkspaces();
+	});
 </script>
+
 <div class="flex h-full">
-	<div class="flex-1 flex flex-col items-center border-r border-white pt-5 px-0.5">
-		<button class="hover:ring-slate-400 rounded-full">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				class="w-12 h-12 text-white p-2 bg-blue-800 rounded-full"
-				viewBox="0 0 24 24"
-			>
-				<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-			</svg>
-		</button>
-		<button class="hidden md:block text-white text-4xl text-center"> + </button>
-	</div>
-	<div class="flex-[3] flex flex-col gap-7 pt-5 ">
+	<SidebarWorkspaceList getAllWorkSpacesResponse={getAllWorkSpacesResponse}/>
+	<div class="flex-[3] flex flex-col gap-7 pt-5">
 		<div class="flex items-center border-b border-white px-3 pb-4">
 			<div class="text-white font-semibold text-xl">Glue Labs</div>
 			<svg
@@ -104,7 +109,10 @@
 		<div class="flex flex-col gap-4 px-2">
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/dashboard')}>
+			<div
+				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
+				on:click={() => goto('/dashboard')}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -123,7 +131,10 @@
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/attendance')}>
+			<div
+				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
+				on:click={() => goto('/attendance')}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -142,7 +153,10 @@
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/leave')}>
+			<div
+				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
+				on:click={() => goto('/leave')}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -161,7 +175,10 @@
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer" on:click={() => goto('/employee')}>
+			<div
+				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
+				on:click={() => goto('/employee')}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"

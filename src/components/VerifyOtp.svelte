@@ -5,7 +5,6 @@
 	import { verifyOTP } from '$lib/api';
 	import { goto } from '$app/navigation';
 
-	export let isOpen;
 	export let closeModal;
 	export let email;
 	let showToast = false;
@@ -33,9 +32,7 @@
 </script>
 
 <div
-	class="{isOpen
-		? 'block'
-		: 'hidden'} fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50"
+	class=" block fixed top-0 left-0 w-full h-full justify-center items-center bg-black bg-opacity-50"
 >
 	<div class="bg-white p-4 rounded-md shadow-lg">
 		<h2 class="text-xl font-semibold mb-4">Verify OTP</h2>

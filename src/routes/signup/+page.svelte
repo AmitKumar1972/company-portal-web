@@ -86,7 +86,7 @@
 		</div>
 	</div>
 	{#if isOTPModalOpen}
-		<VerifyOtp isOpen={isOTPModalOpen} closeModal={() => (isOTPModalOpen = false)} {email} />
+		<VerifyOtp closeModal={() => (isOTPModalOpen = false)} {email} />
 	{/if}
 </div>
 <Footer />
