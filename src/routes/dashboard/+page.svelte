@@ -59,7 +59,7 @@
 </script>
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
-	<div class="w-72 bg-slate-700 hidden sm:block">
+	<div class="bg-slate-700 hidden sm:block">
 		<SideBar />
 	</div>
 	<div class="w-full flex flex-col">
@@ -77,7 +77,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="hidden lg:block border-l pl-8"><EmployeeTable /></div>
+			<div class="hidden xl:block border-l "><EmployeeTable /></div>
 		</div>
 	</div>
 </div>
