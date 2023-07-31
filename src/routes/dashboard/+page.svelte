@@ -59,7 +59,7 @@
 </script>
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
-	<div class="bg-slate-700 hidden sm:block">
+	<div class="w-72 bg-slate-700 hidden sm:block">
 		<SideBar />
 	</div>
 	<div class="w-full flex flex-col">
