@@ -79,3 +79,23 @@ export async function createWorkspace(workspaceName: string, uniqueName: string)
         throw new Error('Error while creating workspace. Please try again later.');
     }
 }
+
+export async function addEmployee(name: string, email: string,workSpaceId: string,role: string) {
+    try {
+        const graphQLClient = new GraphQLClient(graphqlEndpoint);
+        const token = Cookies.get('portal-token');
+        graphQLClient.setHeader('authorization', `Bearer ${token}`);
+
+        const data = await graphQLClient.request(CREATE_WORKSPACE_MUTATION,{
+            name: name,
+            email:email,
+            workSpaceId: workSpaceId,
+            role: role
+        });
+
+        return data;
+
+    } catch (error) {
+        throw new Error('Error while creating workspace. Please try again later.');
+    }
+}

@@ -51,3 +51,24 @@ mutation CreateWorkspaceMutation($workspaceName: String!, $uniqueName: String!) 
     }
 }
 `;
+
+export const ADD_EMPLOYEE_MUTATION = `
+mutation AddEmployeeMutation(name: String!,email: String!,workspaceId: String!,role: roleTypes!) {
+    addEmployee (name: $name, email: $email, workspaceId: $workspaceId, role: $role) {
+        message
+    }
+}
+`;
+
+export const WORKSPACE_DETAIL_QUERY = `
+query GetWorkspaceDetailsByUniqueName($uniqueName: String!){
+    getWorkspaceDetailsByUniqueName (uniqueName: $uniqueName) {
+        id
+        createdBy
+        workspaceName
+        uniqueName
+        logo
+        description
+    }
+}
+`;

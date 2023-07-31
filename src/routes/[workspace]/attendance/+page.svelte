@@ -1,9 +1,9 @@
 <script>
 	// @ts-nocheck
 
-	import SideBar from '../../components/SideBar.svelte';
-	import AllEmployeeAttendance from '../../components/AllEmployeeAttendance.svelte';
-	import MemberOnLeave from '../../components/MemberOnLeave.svelte';
+	import SideBar from '../../../components/SideBar.svelte';
+	import AllEmployeeAttendance from '../../../components/AllEmployeeAttendance.svelte';
+	import MemberOnLeave from '../../../components/MemberOnLeave.svelte';
 
 	// Dummy data for individual employee attendance
 	let individualAttendance = {
@@ -62,7 +62,7 @@
 
 <div class="flex flex-col md:flex-row w-screen h-screen">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar getAllWorkSpacesResponse={data.getAllWorkspaces}/>
+		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} />
 	</div>
 
 	<div class="w-full h-full flex flex-col bg-neutral-100">

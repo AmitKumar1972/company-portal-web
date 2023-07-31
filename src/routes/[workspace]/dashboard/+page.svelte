@@ -50,21 +50,21 @@
 </div> -->
 
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
-	import EmployeeTable from '../../components/EmployeeTable.svelte';
-	import SideBar from '../../components/SideBar.svelte';
-	import RecentAttendes from '../../components/RecentAttendes.svelte';
-	import Annoucement from '../../components/Annoucement.svelte';
-	import Header from '../../components/Header.svelte';
-	import DailyEmployeeStats from '../../components/DailyEmployeeStats.svelte';
+	import EmployeeTable from '../../../components/EmployeeTable.svelte';
+	import SideBar from '../../../components/SideBar.svelte';
+	import RecentAttendes from '../../../components/RecentAttendes.svelte';
+	import Annoucement from '../../../components/Annoucement.svelte';
+	import Header from '../../../components/Header.svelte';
+	import DailyEmployeeStats from '../../../components/DailyEmployeeStats.svelte';
 
 	export let data;
 </script>
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar getAllWorkSpacesResponse={data.getAllWorkspaces}/>
+		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} />
 	</div>
 	<div class="w-full flex flex-col">
 		<Header />
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="hidden xl:block border-l "><EmployeeTable /></div>
+			<div class="hidden xl:block border-l"><EmployeeTable /></div>
 		</div>
 	</div>
 </div>
