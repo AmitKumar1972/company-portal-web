@@ -2,8 +2,9 @@
 <script>
 	// @ts-nocheck
 
-	import { verifyOTP } from '$lib/api';
+	import { getAllWorkSpaces, verifyOTP } from '$lib/api';
 	import { goto } from '$app/navigation';
+	import Cookies from 'js-cookie';
 
 	export let closeModal;
 	export let email;
@@ -12,13 +13,12 @@
 
 	async function handleVerify() {
 		const verifyOtpResponse = await verifyOTP(email, otp);
-		if (verifyOtpResponse?.verifyOTP) {
-			
-            const token = verifyOtpResponse.verifyOTP.token;
+		if (verifyOtpResponse?.verifyOtp) {
+            const token = verifyOtpResponse.verifyOtp.token;
             Cookies.set('portal-token', token);
 
             const allWorkspaces = await getAllWorkSpaces();
-            let workspaceName = allWorkspaces.getAllWorkspaces.workspace[0].uniqueName
+            let workspaceName = allWorkspaces.getAllWorkspaces.workspace[0].uniqueName;
         
             goto(`${workspaceName}/dashboard`);
 		}

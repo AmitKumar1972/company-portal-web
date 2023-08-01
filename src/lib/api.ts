@@ -54,10 +54,9 @@ export async function getAllWorkSpaces() {
         const token = Cookies.get('portal-token');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
 
-
         const data = await graphQLClient.request(GET_ALL_WORKSPACES_QUERY);
-        return data;
 
+        return data;
     } catch (error) {
         throw new Error('Error getting all workspaces in. Please try again later.');
     }
@@ -122,7 +121,6 @@ export async function getAllEmployees(uniqueName: string) {
     try {
         const graphQLClient = new GraphQLClient(graphqlEndpoint);
         const token = Cookies.get('portal-token');
-        console.log(token,'tokeeee');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
 
 
@@ -138,9 +136,7 @@ export async function takeLeave(workspaceId: number, startDate: string, reason: 
     try {
         const graphQLClient = new GraphQLClient(graphqlEndpoint);
         const token = Cookies.get('portal-token');
-        console.log(token,'tokeeee');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
-
 
         const data = await graphQLClient.request(GET_ALL_USERS, {
             workspaceId,
@@ -148,8 +144,8 @@ export async function takeLeave(workspaceId: number, startDate: string, reason: 
             reason,
             leaveType,
         });
-        return data;
 
+        return data;
     } catch (error) {
         throw new Error('Error taking leave. Please try again later.');
     }
