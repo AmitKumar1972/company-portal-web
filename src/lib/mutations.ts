@@ -26,9 +26,11 @@ mutation Signin($email: String!, $password: String!) {
 export const VERIFY_OTP_MUTATION = `
         mutation VerifyOtp($email: String!, $otp: Int!) {
             verifyOtp(email: $email, otp: $otp) {
-                name
+                token
+                user{name
                 email
-                isEmailVerified
+                isemailVerified
+                }
             }
         }
 `;
@@ -80,6 +82,27 @@ export const RESET_PASSWORD_MUTATION = `
 mutation ResetPassword($email: String!, $oldPassword: String!,$newPassword: String!){
     resetPassword(email: $email,newPassword:$newPassword,oldPassword:$oldPassword){
       token
+    }
+  }
+`;
+
+export const GET_ALL_USERS = `
+query GetAllUsers($uniqueName: String!){
+    getAllUsers (uniqueName: $uniqueName) {
+        total
+        user{
+            name
+            email
+            mobileNumber
+        }
+    }
+}
+`;
+
+export const TAKE_LEAVE_MUTATION = `
+mutation TakeLeave($workspaceId: Int!,$reason:String!, $startDate: String!,$numberOfLeaves: Int!,$leaveType: LeaveType!){
+    takeLeave(workspaceId:$workspaceId,reason:$reason, startDate:$startDate,numberOfLeaves: $numberOfLeaves,leaveType: $leaveType){
+      message
     }
   }
 `;

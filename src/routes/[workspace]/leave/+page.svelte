@@ -13,7 +13,7 @@
             <SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} workspaceDetails = {data.workspaceDetails.getWorkspaceDetailsByUniqueName}/>
         </div>
         <div class="w-full h-full flex flex-col bg-neutral-100">
-            <ManageTimeHeader />
+            <ManageTimeHeader workspaceId={data.workspaceDetails.getWorkspaceDetailsByUniqueName.id}/>
             <div class="flex flex-row gap-7 px-12 py-4">
                 <AvailableLeave title="Casual Leave" available="9" total="12" color="border-blue-500" />
                 <AvailableLeave title="Sick Leave" available="5" total="10" color="border-red-500" />

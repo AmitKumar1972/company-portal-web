@@ -12,21 +12,17 @@
 
 	async function handleVerify() {
 		const verifyOtpResponse = await verifyOTP(email, otp);
-		if (verifyOtpResponse?.verifyOtp) {
-			// OTP verification successful
-			closeModal();
+		if (verifyOtpResponse?.verifyOTP) {
+			
+            const token = verifyOtpResponse.verifyOTP.token;
+            Cookies.set('portal-token', token);
 
-			showToast = true;
-
-			goto('/dashboard');
-
-			setTimeout(() => {
-				showToast = false;
-			}, 5000);
-		} else {
-			// OTP verification failed
-			alert('Invalid OTP. Please try again.');
+            const allWorkspaces = await getAllWorkSpaces();
+            let workspaceName = allWorkspaces.getAllWorkspaces.workspace[0].uniqueName
+        
+            goto(`${workspaceName}/dashboard`);
 		}
+		closeModal();
 	}
 </script>
 

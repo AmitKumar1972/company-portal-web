@@ -2,7 +2,9 @@
 <script>
 	// @ts-nocheck
 
-	export let onClose; // Receive the onClose function as a prop
+	export let onClose;
+	export let workspaceId;
+	 // Receive the onClose function as a prop
 
 	function handleClose() {
 		onClose();

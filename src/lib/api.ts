@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import request, { GraphQLClient } from "graphql-request";
 import Cookies from "js-cookie";
-import { ADD_EMPLOYEE_MUTATION, CREATE_WORKSPACE_MUTATION, GET_ALL_WORKSPACES_QUERY, RESET_PASSWORD_MUTATION, SIGNIN_MUTATION, SIGNUP_MUTATION, VERIFY_OTP_MUTATION } from "./mutations";
-import type { roleTypes } from "$lib";
+import { ADD_EMPLOYEE_MUTATION, CREATE_WORKSPACE_MUTATION, GET_ALL_USERS, GET_ALL_WORKSPACES_QUERY, RESET_PASSWORD_MUTATION, SIGNIN_MUTATION, SIGNUP_MUTATION, VERIFY_OTP_MUTATION } from "./mutations";
+import type { LeaveType, roleTypes } from "$lib";
 
 const graphqlEndpoint = 'http://localhost:5001/graphql';
 
@@ -115,5 +115,42 @@ export async function resetPassword(email: string, oldPassword: string,newPasswo
 
     } catch (error) {
         throw new Error('Error while resetting password. Please try again later.');
+    }
+}
+
+export async function getAllEmployees(uniqueName: string) {
+    try {
+        const graphQLClient = new GraphQLClient(graphqlEndpoint);
+        const token = Cookies.get('portal-token');
+        console.log(token,'tokeeee');
+        graphQLClient.setHeader('authorization', `Bearer ${token}`);
+
+
+        const data = await graphQLClient.request(GET_ALL_USERS, {uniqueName: uniqueName});
+        return data;
+
+    } catch (error) {
+        throw new Error('Error getting all workspaces in. Please try again later.');
+    }
+}
+
+export async function takeLeave(workspaceId: number, startDate: string, reason: string, leaveType: LeaveType) {
+    try {
+        const graphQLClient = new GraphQLClient(graphqlEndpoint);
+        const token = Cookies.get('portal-token');
+        console.log(token,'tokeeee');
+        graphQLClient.setHeader('authorization', `Bearer ${token}`);
+
+
+        const data = await graphQLClient.request(GET_ALL_USERS, {
+            workspaceId,
+            startDate,
+            reason,
+            leaveType,
+        });
+        return data;
+
+    } catch (error) {
+        throw new Error('Error taking leave. Please try again later.');
     }
 }

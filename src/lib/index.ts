@@ -5,3 +5,9 @@ export enum roleTypes {
     INTERN = 'INTERN',
     CONTRACT = 'CONTRACT'
   }
+
+  export enum LeaveType {
+    SICK = 'SICK',
+    PAID = 'PAID',
+    UNPAID = 'UNPAID'
+  }

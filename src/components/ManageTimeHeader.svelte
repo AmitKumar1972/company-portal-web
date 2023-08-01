@@ -15,6 +15,7 @@
 // @ts-nocheck
 
 	import LeaveApplication from "./LeaveApplication.svelte";
+  export let workspaceId;
 
     let isModalOpen = false;
   
@@ -40,7 +41,7 @@
     {#if isModalOpen}
     <div class="fixed inset-0 flex justify-center items-center z-50 bg-gray-800 bg-opacity-50">
       <div class="bg-white p-8 rounded-lg w-80">
-        <LeaveApplication onClose={closeModal} /> <!-- Pass the closeModal function to the LeaveApplication component -->
+        <LeaveApplication {workspaceId} onClose={closeModal} /> <!-- Pass the closeModal function to the LeaveApplication component -->
       </div>
     </div>
     {/if}
