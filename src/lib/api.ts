@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import request, { GraphQLClient } from "graphql-request";
 import Cookies from "js-cookie";
-import { CREATE_WORKSPACE_MUTATION, GET_ALL_WORKSPACES_QUERY, SIGNIN_MUTATION, SIGNUP_MUTATION, VERIFY_OTP_MUTATION } from "./mutations";
+import { ADD_EMPLOYEE_MUTATION, CREATE_WORKSPACE_MUTATION, GET_ALL_WORKSPACES_QUERY, RESET_PASSWORD_MUTATION, SIGNIN_MUTATION, SIGNUP_MUTATION, VERIFY_OTP_MUTATION } from "./mutations";
+import type { roleTypes } from "$lib";
 
 const graphqlEndpoint = 'http://localhost:5001/graphql';
 
@@ -80,22 +81,39 @@ export async function createWorkspace(workspaceName: string, uniqueName: string)
     }
 }
 
-export async function addEmployee(name: string, email: string,workSpaceId: string,role: string) {
-    try {
+export async function addEmployee(name: string, email: string, workspaceId: string,role: roleTypes) {
+    try {        
         const graphQLClient = new GraphQLClient(graphqlEndpoint);
         const token = Cookies.get('portal-token');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
 
-        const data = await graphQLClient.request(CREATE_WORKSPACE_MUTATION,{
+        const data = await graphQLClient.request(ADD_EMPLOYEE_MUTATION,{
             name: name,
             email:email,
-            workSpaceId: workSpaceId,
+            workspaceId: workspaceId,
             role: role
         });
 
         return data;
 
     } catch (error) {
-        throw new Error('Error while creating workspace. Please try again later.');
+        throw new Error('Error while adding employee. Please try again later.');
+    }
+}
+
+export async function resetPassword(email: string, oldPassword: string,newPassword: string) {
+    try {        
+        const graphQLClient = new GraphQLClient(graphqlEndpoint);
+
+        const data = await graphQLClient.request(RESET_PASSWORD_MUTATION,{
+            email:email,
+            oldPassword: oldPassword,
+            newPassword: newPassword
+        });
+
+        return data;
+
+    } catch (error) {
+        throw new Error('Error while resetting password. Please try again later.');
     }
 }

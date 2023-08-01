@@ -16,6 +16,8 @@ mutation Signin($email: String!, $password: String!) {
             id
             name
             email
+            isemailVerified
+            isActivated
         }
     }
 }
@@ -36,6 +38,7 @@ query GetAllWorkSpaces {
     getAllWorkspaces {
         total
         workspace{
+            uniqueName
             workspaceName
         }
     }
@@ -53,11 +56,11 @@ mutation CreateWorkspaceMutation($workspaceName: String!, $uniqueName: String!) 
 `;
 
 export const ADD_EMPLOYEE_MUTATION = `
-mutation AddEmployeeMutation(name: String!,email: String!,workspaceId: String!,role: roleTypes!) {
-    addEmployee (name: $name, email: $email, workspaceId: $workspaceId, role: $role) {
-        message
+mutation AddEmployee($name:String!, $email: String!, $workspaceId: String!,$role: roleTypes!){
+    addEmployee(name: $name,email:$email,workspaceId:$workspaceId,role:$role){
+      message
     }
-}
+  }
 `;
 
 export const WORKSPACE_DETAIL_QUERY = `
@@ -71,4 +74,12 @@ query GetWorkspaceDetailsByUniqueName($uniqueName: String!){
         description
     }
 }
+`;
+
+export const RESET_PASSWORD_MUTATION = `
+mutation ResetPassword($email: String!, $oldPassword: String!,$newPassword: String!){
+    resetPassword(email: $email,newPassword:$newPassword,oldPassword:$oldPassword){
+      token
+    }
+  }
 `;

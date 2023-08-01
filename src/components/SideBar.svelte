@@ -72,13 +72,14 @@
 	import { goto } from '$app/navigation';
 	import SidebarWorkspaceList from './SidebarWorkspaceList.svelte';
 	export let getAllWorkSpacesResponse;
+	export let workspaceDetails;
 </script>
 
 <div class="flex h-full">
 	<SidebarWorkspaceList getAllWorkSpacesResponse={getAllWorkSpacesResponse}/>
 	<div class="flex-[3] flex flex-col gap-7 pt-5">
 		<div class="flex items-center border-b border-white px-3 pb-4">
-			<div class="text-white font-semibold text-xl">Glue Labs</div>
+			<div class="text-white font-semibold text-xl">{workspaceDetails.workspaceName}</div>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -95,7 +96,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
-				on:click={() => goto('/dashboard')}
+				on:click={() => goto(`./dashboard`)}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +118,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
-				on:click={() => goto('/attendance')}
+				on:click={() => goto('./attendance')}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +140,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
-				on:click={() => goto('/leave')}
+				on:click={() => goto('./leave')}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +162,7 @@
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			<div
 				class="flex items-center gap-2 hover:bg-gray-500 p-2 rounded cursor-pointer"
-				on:click={() => goto('/employee')}
+				on:click={() => goto('./employee')}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

@@ -21,11 +21,12 @@
 	function handleAddEmployee() {
 		openModal();
 	}
+
 </script>
 
 <div class="flex flex-row w-screen h-screen">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} />
+		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} workspaceDetails = {data.workspaceDetails.getWorkspaceDetailsByUniqueName}/>
 	</div>
 	<div class="w-full h-full flex flex-col bg-neutral-100">
 		<div class="w-full h-full flex flex-col items-start justify-start">
@@ -38,7 +39,7 @@
 			</div>
 			<div class="ml-5 mt-10">
 				<EmployeeCard />
-				<AddEmployeeModal isOpen={isModalOpen} {closeModal} />
+				<AddEmployeeModal isOpen={isModalOpen} {closeModal} workspaceId = {data.workspaceDetails.getWorkspaceDetailsByUniqueName.id}/>
 			</div>
 		</div>
 	</div>

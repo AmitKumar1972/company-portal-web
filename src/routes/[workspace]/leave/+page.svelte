@@ -10,7 +10,7 @@
     
     <div class="flex flex-col md:flex-row w-screen h-screen">
         <div class="w-72 bg-slate-700 hidden sm:block">
-            <SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces}/>
+            <SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} workspaceDetails = {data.workspaceDetails.getWorkspaceDetailsByUniqueName}/>
         </div>
         <div class="w-full h-full flex flex-col bg-neutral-100">
             <ManageTimeHeader />

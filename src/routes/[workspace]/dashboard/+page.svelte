@@ -64,7 +64,7 @@
 
 <div class="w-full min-h-screen flex mx-auto bg-secondary-fill">
 	<div class="w-72 bg-slate-700 hidden sm:block">
-		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} />
+		<SideBar getAllWorkSpacesResponse={data.allWorkspaces.getAllWorkspaces} workspaceDetails = {data.workspaceDetails.getWorkspaceDetailsByUniqueName}/>
 	</div>
 	<div class="w-full flex flex-col">
 		<Header />

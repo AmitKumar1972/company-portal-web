@@ -21,9 +21,8 @@
 			goto('/dashboard');
 
 			setTimeout(() => {
-                    showToast = false;
-                }, 5000);
-
+				showToast = false;
+			}, 5000);
 		} else {
 			// OTP verification failed
 			alert('Invalid OTP. Please try again.');
@@ -31,10 +30,9 @@
 	}
 </script>
 
-<div
-	class=" block fixed top-0 left-0 w-full h-full justify-center items-center bg-black bg-opacity-50"
->
-	<div class="bg-white p-4 rounded-md shadow-lg">
+<div class="fixed inset-0 flex items-center justify-center z-50">
+	<div class="absolute inset-0 bg-gray-900 opacity-60" />
+	<div class="p-8 bg-white drop-shadow-xl w-4/12">
 		<h2 class="text-xl font-semibold mb-4">Verify OTP</h2>
 		<input type="number" bind:value={otp} placeholder="Enter OTP" class="w-full p-2 mb-2 rounded" />
 		<button on:click={handleVerify} class="bg-blue-500 text-white px-4 py-2 rounded-md"
@@ -44,7 +42,7 @@
 	</div>
 </div>
 {#if showToast}
-    <div class="fixed bottom-4 left-4 p-2 bg-gray-800 text-white rounded shadow">
-        OTP verified successfully!
-    </div>
+	<div class="fixed bottom-4 left-4 p-2 bg-gray-800 text-white rounded shadow">
+		OTP verified successfully!
+	</div>
 {/if}

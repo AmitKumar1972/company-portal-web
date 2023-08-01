@@ -2,15 +2,27 @@
 <script>
 // @ts-nocheck
 
-    import { signin } from '$lib/api';
+    import { getAllWorkSpaces, signin } from '$lib/api';
     import Footer from '../../components/Footer.svelte';
     import Input from '../../components/Input.svelte';
     import { goto } from '$app/navigation';
 	import Cookies from 'js-cookie';
+	import VerifyOtp from '../../components/VerifyOtp.svelte';
+	import ResetPasswordModal from '../../modals/ResetPasswordModal.svelte';
   
     let password = '';
     let email = '';
     let apiError = '';
+	let isOTPModalOpen = false;
+	let isResetPasswordModalOpen = false;
+
+	function openOTPModal() {
+		isOTPModalOpen = true;
+    }
+
+    function openResetPasswordModal() {
+		isResetPasswordModalOpen = true;
+    }
 
   
     async function validateForm(event) {
@@ -20,12 +32,23 @@
         const signinResponse = await signin(email, password);
   
         if (signinResponse?.signin) {
-          // Set the token and expiration time in cookies
-          const token = signinResponse.signin.token;
-          Cookies.set('portal-token', token);
-  
-          // Redirect to /dashboard after setting the token
-          goto('/dashboard');
+			const user = signinResponse.signin.user;
+
+          if (!user.isemailVerified) {
+            // User is not verified, open the OTP modal
+            openOTPModal();
+          } else if (!user.isActivated) {
+            // User is verified but not activated, open the reset password modal
+            openResetPasswordModal();
+          } else {
+            // User is both verified and activated, proceed to set the token and redirect
+            const token = signinResponse.signin.token;
+            Cookies.set('portal-token', token);
+            const allWorkspaces = await getAllWorkSpaces();
+            let workspaceName = allWorkspaces.getAllWorkspaces.workspace[0].uniqueName
+        
+            goto(`${workspaceName}/dashboard`);
+          }
         }
       } catch (error) {
         apiError = 'Error in sign in. Please try again later.';
@@ -65,5 +88,11 @@
 			</form>
 		</div>
 	</div>
+	{#if isResetPasswordModalOpen}
+	<ResetPasswordModal closeModal={() => (isResetPasswordModalOpen = false) } {email} oldPassword = {password}/>
+	{/if}
+	{#if isOTPModalOpen}
+		<VerifyOtp closeModal={() => (isOTPModalOpen = false)} {email} />
+	{/if}
 </div>
 <Footer />
