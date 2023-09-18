@@ -35,7 +35,7 @@
 			<div class="w-full h-auto flex flex-row items-start mt-7">
 				<div class="font-semibold text-2xl ml-5">32 Employee</div>
 				<button
-					class="ml-auto mr-5 bg-slate-400 hover:bg-blue-700 text-white font-bold px-2 py-1 rounded focus:outline-none focus:shadow-outline"
+					class="ml-auto mr-5 bg-blue-500 hover:bg-blue-600 text-white font-sans px-2 py-1 rounded focus:outline-none focus:shadow-outline"
 					on:click={handleAddEmployee}>+New Candidate</button
 				>
 			</div>

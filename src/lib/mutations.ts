@@ -47,6 +47,12 @@ query GetAllWorkSpaces {
 }
 `;
 
+export const GET_USER_WORKSPACE_ROLE = `
+query GetUserRoleWorkspace ($uniqueName: String!){
+    getUserRoleWorkspace (uniqueName: $uniqueName)
+}
+`;
+
 export const CREATE_WORKSPACE_MUTATION = `
 mutation CreateWorkspaceMutation($workspaceName: String!, $uniqueName: String!) {
     createWorkspace (workspaceName: $workspaceName, uniqueName: $uniqueName) {
@@ -99,9 +105,17 @@ query GetAllUsers($uniqueName: String!){
 }
 `;
 
-export const TAKE_LEAVE_MUTATION = `
-mutation TakeLeave($workspaceId: Int!,$reason:String!, $startDate: String!,$numberOfLeaves: Int!,$leaveType: LeaveType!){
-    takeLeave(workspaceId:$workspaceId,reason:$reason, startDate:$startDate,numberOfLeaves: $numberOfLeaves,leaveType: $leaveType){
+export const LEAVE_REQUEST_MUTATION = `
+mutation LeaveRequest($workspaceId: Int!,$reason:String!, $startDate: String!,$numberOfLeaves: Int!,$leaveType: LeaveType!){
+    leaveRequest(workspaceId:$workspaceId,reason:$reason, startDate:$startDate,numberOfLeaves: $numberOfLeaves,leaveType: $leaveType){
+      message
+    }
+  }
+`;
+
+export const MANAGE_LEAVE_MUTATION = `
+mutation ManageLeave($workspaceId: Int!,$reason:String!, $startDate: String!,$numberOfLeaves: Int!,$leaveType: LeaveType!){
+    manageLeave(workspaceId:$workspaceId,reason:$reason, startDate:$startDate,numberOfLeaves: $numberOfLeaves,leaveType: $leaveType){
       message
     }
   }

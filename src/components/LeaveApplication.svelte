@@ -1,26 +1,52 @@
 <!-- LeaveApplication.svelte -->
 <script>
+// @ts-nocheck
+
+	import { LeaveType } from "$lib";
+	import { leaveRequest } from "$lib/api";
+
 	// @ts-nocheck
 
 	export let onClose;
 	export let workspaceId;
-	 // Receive the onClose function as a prop
+	// Receive the onClose function as a prop
 
 	function handleClose() {
 		onClose();
 	}
 
 	let leaveType = '';
+	let leaveTypeSelect = '';
 	let startDate = '';
 	let endDate = '';
 	let reason = '';
 
 	function handleLeaveType(event) {
-		leaveType = event.target.value;
+		leaveTypeSelect = event.target.value;
+
+		console.log(leaveTypeSelect);
+
+		if (leaveTypeSelect === 'Paid Leave') {
+			console.log('aaya1');
+			leaveType = LeaveType.PAID;
+		} else if (leaveTypeSelect === 'Sick Leave') {
+			console.log('aaya2');
+			leaveType = LeaveType.SICK;
+		} else if (leaveTypeSelect === 'Work From Home') {
+			console.log('aaya3');
+			leaveType = LeaveType.WORK_FROM_HOME;
+		} else if (leaveTypeSelect === 'Unpaid Leave') {
+			console.log('aaya4');
+			leaveType = LeaveType.UNPAID
+		} else {
+			console.log('aaya5')
+			leaveType = LeaveType.CASUAL;
+		}
 	}
 
 	function handleStartDate(event) {
 		startDate = event.target.value;
+		endDate = '';
 	}
 
 	function handleEndDate(event) {
@@ -31,10 +57,22 @@
 		reason = event.target.value;
 	}
 
-	function handleSubmit() {
-		// You can now use the leaveType, startDate, endDate, and reason to submit the leave application
-		// After submitting the leave application, you can close the modal
-		closeModal();
+	async function handleSubmit() {
+		const startDateObj = new Date(startDate);
+		const endDateObj = new Date(endDate);
+		const timeDifference = endDateObj.getTime() - startDateObj.getTime();
+		const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+		try {
+			const leaveRequestResponse = await leaveRequest(workspaceId, numberOfDays, startDate, reason, leaveType);
+
+			if (leaveRequestResponse?.leaveRequest) {
+				alert('Leave taking done wait for admin to approve');
+			}
+
+			onClose();
+		} catch (error) {
+			throw new Error('Error while taking Leave. Please try again later.');
+		}
 	}
 </script>
 
@@ -45,13 +83,14 @@
 		<select
 			class="w-full border rounded-lg py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-500"
 			id="leaveType"
-			bind:value={leaveType}
+			bind:value={leaveTypeSelect}
 			on:change={handleLeaveType}
 		>
 			<option value="Casual Leave">Casual Leave</option>
+			<option value="Unpaid Leave">Unpaid Leave</option>
+			<option value="Paid Leave">Paid Leave</option>
 			<option value="Sick Leave">Sick Leave</option>
 			<option value="Work From Home">Work From Home</option>
-			<option value="Vacation">Vacation</option>
 		</select>
 	</div>
 	<div class="mb-4">
@@ -72,6 +111,7 @@
 			id="endDate"
 			bind:value={endDate}
 			on:input={handleEndDate}
+			min={startDate}
 		/>
 	</div>
 	<div class="mb-4">
