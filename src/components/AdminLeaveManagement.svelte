@@ -1,17 +1,26 @@
 <script>
+// @ts-nocheck
+
+	import { LeaveStatus } from '$lib';
+	import { manageLeave } from '$lib/api';
+
+  export let workspaceId;
+
 	let leaveData = [
 		{
-      id: '7723e1893',
+			id: '7723e1893',
 			leaveType: 'Casual Leave',
 			duration: '13 Apr 2020 - 16 Apr 2020',
+      userId: '4788239489',
 			count: 3,
 			reason: 'Not feeling well',
 			status: 'Pending' // Admin needs to approve this leave
 		},
 		{
-      id: '7371983298',
+			id: '7371983298',
 			leaveType: 'Sick Leave',
 			duration: '13 May 2020 - 17 May 2020',
+      userId: '239423908',
 			count: 4,
 			reason: 'Fever',
 			status: 'Pending' // Admin needs to approve this leave
@@ -19,18 +28,18 @@
 		// Add more data as needed
 	];
 
-	async function handleAction(leaveId, action) {
-		const verifyOtpResponse = await manageLeave(email, otp);
-		if (verifyOtpResponse?.verifyOtp) {
-			const token = verifyOtpResponse.verifyOtp.token;
-			Cookies.set('portal-token', token);
+	async function handleAction(memberId, status, leaveType) {
+		try {
+			const leaveRequestResponse = await manageLeave(workspaceId, memberId, status, leaveType);
 
-			const allWorkspaces = await getAllWorkSpaces();
-			let workspaceName = allWorkspaces.getAllWorkspaces.workspace[0].uniqueName;
+			if (leaveRequestResponse?.leaveRequest) {
+				alert('Leave taking done wait for admin to approve');
+			}
 
-			goto(`${workspaceName}/dashboard`);
+			onClose();
+		} catch (error) {
+			throw new Error('Error while taking Leave. Please try again later.');
 		}
-		closeModal();
 	}
 </script>
 
@@ -70,11 +79,11 @@
 					<td class="px-4 py-2 border-b border-gray-300">
 						<button
 							class="bg-green-500 text-white px-4 py-2 rounded"
-							on:click={() => handleAction(leave.id, 'approve')}>Approve</button
+							on:click={() => handleAction(leave.userId, LeaveStatus.APPROVED, leave.leaveType)}>Approve</button
 						>
 						<button
 							class="bg-red-500 text-white px-4 py-2 rounded ml-2"
-							on:click={() => handleAction(leave.id, 'reject')}>Reject</button
+							on:click={() => handleAction(leave.userId, LeaveStatus.REJECTED, leave.leaveType)}>Reject</button
 						>
 					</td>
 				</tr>

@@ -13,3 +13,9 @@ export enum LeaveType {
   PAID = 'PAID',
   UNPAID = 'UNPAID'
 }
+
+export enum LeaveStatus {
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+  PENDING = 'PENDING'
+}

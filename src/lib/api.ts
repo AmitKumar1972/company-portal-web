@@ -2,7 +2,7 @@
 import request, { GraphQLClient } from "graphql-request";
 import Cookies from "js-cookie";
 import { ADD_EMPLOYEE_MUTATION, CREATE_WORKSPACE_MUTATION, GET_ALL_USERS, GET_ALL_WORKSPACES_QUERY, RESET_PASSWORD_MUTATION, SIGNIN_MUTATION, SIGNUP_MUTATION, LEAVE_REQUEST_MUTATION, VERIFY_OTP_MUTATION, MANAGE_LEAVE_MUTATION } from "./mutations";
-import type { LeaveType, roleTypes } from "$lib";
+import type { LeaveStatus, LeaveType, roleTypes } from "$lib";
 
 const graphqlEndpoint = 'http://localhost:5001/graphql';
 
@@ -154,19 +154,16 @@ export async function leaveRequest(workspaceId: number,numberOfLeaves: number, s
     }
 }
 
-export async function manageLeave(workspaceId: number,numberOfLeaves: number, startDate: string, reason: string, leaveType: LeaveType) {
+export async function manageLeave(workspaceId: number, memberId: string, status: LeaveStatus, leaveType: LeaveType) {
     try {
         const graphQLClient = new GraphQLClient(graphqlEndpoint);
         const token = Cookies.get('portal-token');
         graphQLClient.setHeader('authorization', `Bearer ${token}`);
 
-        console.log(leaveType,'ejdj');
-
         const data = await graphQLClient.request(MANAGE_LEAVE_MUTATION, {
             workspaceId,
-            numberOfLeaves,
-            startDate,
-            reason,
+            memberId,
+            status,
             leaveType,
         });
 

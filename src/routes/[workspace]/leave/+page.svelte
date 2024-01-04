@@ -18,7 +18,7 @@
 	</div>
 	<div class="w-full h-full flex flex-col bg-neutral-100">
 		{#if data.currentUserRole.getUserRoleWorkspace == 'OWNER'}
-			<AdminLeaveManagement />
+			<AdminLeaveManagement workspaceId={data.workspaceDetails.getWorkspaceDetailsByUniqueName.id}/>
 		{:else}
 			<div class="w-full h-full flex flex-col bg-neutral-100">
 				<ManageTimeHeader workspaceId={data.workspaceDetails.getWorkspaceDetailsByUniqueName.id} />

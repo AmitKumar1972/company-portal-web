@@ -114,9 +114,10 @@ mutation LeaveRequest($workspaceId: Int!,$reason:String!, $startDate: String!,$n
 `;
 
 export const MANAGE_LEAVE_MUTATION = `
-mutation ManageLeave($workspaceId: Int!,$reason:String!, $startDate: String!,$numberOfLeaves: Int!,$leaveType: LeaveType!){
-    manageLeave(workspaceId:$workspaceId,reason:$reason, startDate:$startDate,numberOfLeaves: $numberOfLeaves,leaveType: $leaveType){
+mutation ManageLeave($workspaceId: Int!,$memberId:String!, $status: LeaveStatus!,$leaveType: LeaveType!){
+    manageLeave(workspaceId:$workspaceId,memberId:$memberId,status: $status,leaveType: $leaveType){
       message
     }
   }
 `;
+
